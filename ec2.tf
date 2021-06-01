@@ -1,6 +1,8 @@
 resource "aws_instance" "test_cluster_m1" {
   ami           = data.aws_ami.base_image.id
   instance_type = "t2.small"
+  key_name="terraform"
+  vpc_security_group_ids = [aws_security_group.sec_group_block.id]
   tags = {
     Name = "test_cluster_m1"
   }
@@ -18,9 +20,16 @@ resource "aws_instance" "test_cluster_m1" {
     }
   }
 }
+
+
+
+
+
 resource "aws_instance" "test_cluster_m2" {
   ami           = data.aws_ami.base_image.id
   instance_type = "t2.small"
+  key_name="terraform"
+  vpc_security_group_ids = [aws_security_group.sec_group_block.id]
   tags = {
     Name = "test_cluster_m2"
   }
@@ -41,6 +50,8 @@ resource "aws_instance" "test_cluster_m2" {
 resource "aws_instance" "test_cluster_w1" {
   ami           = data.aws_ami.base_image.id
   instance_type = "t2.small"
+  key_name="terraform"
+  vpc_security_group_ids = [aws_security_group.sec_group_block.id]
   tags = {
     Name = "test_cluster_w1"
   }
@@ -61,6 +72,8 @@ resource "aws_instance" "test_cluster_w1" {
 resource "aws_instance" "test_cluster_w2" {
   ami           = data.aws_ami.base_image.id
   instance_type = "t2.small"
+  key_name="terraform"
+  vpc_security_group_ids = [aws_security_group.sec_group_block.id]
   tags = {
     Name = "test_cluster_w2"
   }
@@ -81,6 +94,8 @@ resource "aws_instance" "test_cluster_w2" {
 resource "aws_instance" "test_cluster_w3" {
   ami           = data.aws_ami.base_image.id
   instance_type = "t2.small"
+  key_name="terraform"
+  vpc_security_group_ids = [aws_security_group.sec_group_block.id]
   tags = {
     Name = "test_cluster_w3"
   }
