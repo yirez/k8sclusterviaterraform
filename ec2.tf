@@ -1,116 +1,47 @@
 resource "aws_instance" "test_cluster_m1" {
-  ami           = data.aws_ami.base_image.id
-  instance_type = "t2.small"
-  key_name="terraform"
+  ami                    = data.aws_ami.base_image.id
+  instance_type          = "t2.small"
+  key_name               = "terraformec2"
   vpc_security_group_ids = [aws_security_group.sec_group_block.id]
   tags = {
     Name = "test_cluster_m1"
   }
-  provisioner "remote-exec" {
-    inline = [
-      "echo ${aws_eip.eip_m1.public_ip}",
-      "echo ${aws_instance.test_cluster_m1.public_ip}"
-    ]
-
-    connection {
-      type        = "ssh"
-      host        = self.public_ip
-      user        = "ec2-user"
-      private_key = file("./terraform.pem")
-    }
-  }
 }
-
-
-
-
-
+ 
 resource "aws_instance" "test_cluster_m2" {
-  ami           = data.aws_ami.base_image.id
-  instance_type = "t2.small"
-  key_name="terraform"
+  ami                    = data.aws_ami.base_image.id
+  instance_type          = "t2.small"
+  key_name               = "terraformec2"
   vpc_security_group_ids = [aws_security_group.sec_group_block.id]
   tags = {
     Name = "test_cluster_m2"
   }
-  provisioner "remote-exec" {
-    inline = [
-      "echo ${aws_eip.eip_m2.public_ip}",
-      "echo ${aws_instance.test_cluster_m2.public_ip}"
-    ]
-
-    connection {
-      type        = "ssh"
-      host        = self.public_ip
-      user        = "ec2-user"
-      private_key = file("./terraform.pem")
-    }
-  }
 }
 resource "aws_instance" "test_cluster_w1" {
-  ami           = data.aws_ami.base_image.id
-  instance_type = "t2.small"
-  key_name="terraform"
+  ami                    = data.aws_ami.base_image.id
+  instance_type          = "t2.small"
+  key_name               = "terraformec2"
   vpc_security_group_ids = [aws_security_group.sec_group_block.id]
   tags = {
     Name = "test_cluster_w1"
   }
-  provisioner "remote-exec" {
-    inline = [
-      "echo ${aws_eip.eip_w1.public_ip}",
-      "echo ${aws_instance.test_cluster_w1.public_ip}"
-    ]
-
-    connection {
-      type        = "ssh"
-      host        = self.public_ip
-      user        = "ec2-user"
-      private_key = file("./terraform.pem")
-    }
-  }
 }
 resource "aws_instance" "test_cluster_w2" {
-  ami           = data.aws_ami.base_image.id
-  instance_type = "t2.small"
-  key_name="terraform"
+  ami                    = data.aws_ami.base_image.id
+  instance_type          = "t2.small"
+  key_name               = "terraformec2"
   vpc_security_group_ids = [aws_security_group.sec_group_block.id]
   tags = {
     Name = "test_cluster_w2"
   }
-  provisioner "remote-exec" {
-    inline = [
-      "echo ${aws_eip.eip_w2.public_ip}",
-      "echo ${aws_instance.test_cluster_w2.public_ip}"
-    ]
-
-    connection {
-      type        = "ssh"
-      host        = self.public_ip
-      user        = "ec2-user"
-      private_key = file("./terraform.pem")
-    }
-  }
 }
 resource "aws_instance" "test_cluster_w3" {
-  ami           = data.aws_ami.base_image.id
-  instance_type = "t2.small"
-  key_name="terraform"
+  ami                    = data.aws_ami.base_image.id
+  instance_type          = "t2.small"
+  key_name               = "terraformec2"
   vpc_security_group_ids = [aws_security_group.sec_group_block.id]
   tags = {
     Name = "test_cluster_w3"
-  }
-  provisioner "remote-exec" {
-    inline = [
-      "echo ${aws_eip.eip_w3.public_ip}",
-      "echo ${aws_instance.test_cluster_w3.public_ip}"
-    ]
-
-    connection {
-      type        = "ssh"
-      host        = self.public_ip
-      user        = "ec2-user"
-      private_key = file("./terraform.pem")
-    }
   }
 }
 
