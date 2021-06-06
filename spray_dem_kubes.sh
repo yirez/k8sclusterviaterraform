@@ -53,6 +53,7 @@ echo "**************************************"
 if test -f terraformec2.pem
 then
    echo "INFO: .pem found"
+   cp terraformec2.pem kubespray/terraformec2.pem
 else
    echo "ERROR: Necessary server key file (.pem) missing"
    exit 1
@@ -98,5 +99,5 @@ vi inventory/${cluster_name}/group_vars/all/all.yml \
 echo " "
 echo "Run kubespray playbook"
 echo "**************************************"
-read -p "Ready? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1 
+read -p "Ready? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 ansible-playbook -i inventory/${cluster_name}/hosts.yaml  --private-key=terraformec2.pem --become --become-user=root --user=ec2-user cluster.yml
