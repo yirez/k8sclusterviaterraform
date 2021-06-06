@@ -53,7 +53,6 @@ echo "**************************************"
 if test -f terraformec2.pem
 then
    echo "INFO: .pem found"
-   cp terraformec2.pem kubespray/terraformec2.pem
 else
    echo "ERROR: Necessary server key file (.pem) missing"
    exit 1
@@ -65,6 +64,7 @@ echo "**************************************"
 rm -rf kubespray
 git clone https://github.com/kubernetes-sigs/kubespray.git \
 && cd kubespray
+cp terraformec2.pem kubespray/terraformec2.pem
 
 echo " "
 echo "Installing kubespray requirements"
